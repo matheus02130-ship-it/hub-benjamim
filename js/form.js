@@ -11,7 +11,7 @@ const Form = (() => {
 
   // WhatsApp do estúdio. DDI + DDD + número, só dígitos.
   // Placeholder: 5511999999999 (substituir antes do deploy).
-  const WA_NUMBER = '5511999999999';
+  const WA_NUMBER = '5511925136263';   /* Bella — linha direta */
 
   // Rótulos legíveis para incluir nas mensagens (ao invés do slug)
   const SEGMENTO_LABEL = {
@@ -35,6 +35,7 @@ const Form = (() => {
   // ---- Estado ----
   let formData = {};
   let isSubmitting = false;
+  let hasSubmitted = false;   // só vira true após persistLead() bem-sucedido
 
   // ---- Checkboxes multi-select (divs com role="checkbox") ----
   function initCheckboxes() {
@@ -96,20 +97,20 @@ const Form = (() => {
     return validate(collectData()) === null;
   }
 
-  // ---- Reatividade: liga/desliga botão "Analisar perfil" conforme validade ----
+  // ---- Reatividade: o botão "Analisar perfil" só habilita APÓS o envio ----
   function notifyChange() {
     const btn = document.getElementById('btn-analisar-form');
     const copy = document.getElementById('form-analysis-copy');
     if (!btn) return;
 
-    const valid = isFormValid();
-    btn.disabled = !valid;
-    btn.classList.toggle('is-ready', valid);
+    const enabled = hasSubmitted && isFormValid();
+    btn.disabled = !enabled;
+    btn.classList.toggle('is-ready', enabled);
 
     if (copy) {
-      copy.textContent = valid
-        ? 'Tudo pronto. Envie sua solicitação ou abra o diagnóstico do seu perfil agora.'
-        : 'Conclua o formulário e abra o diagnóstico do seu perfil — uma leitura objetiva da sua presença digital, preparada pelo nosso time.';
+      copy.textContent = hasSubmitted
+        ? 'Solicitação enviada. Pode abrir o diagnóstico do seu perfil agora.'
+        : 'Envie sua solicitação para liberar o diagnóstico do seu perfil — uma leitura objetiva da sua presença digital, preparada pelo nosso time.';
     }
   }
 
@@ -173,6 +174,8 @@ const Form = (() => {
     if (!WEBHOOK_URL) {
       // Dev: simula latência
       await new Promise(r => setTimeout(r, 600));
+      hasSubmitted = true;
+      notifyChange();
       return true;
     }
 
@@ -191,6 +194,8 @@ const Form = (() => {
       }),
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    hasSubmitted = true;
+    notifyChange();
     return true;
   }
 
@@ -220,35 +225,20 @@ const Form = (() => {
     }
   }
 
-  // ---- Atalho: enviar e abrir o modal de análise ----
-  async function submitAndAnalyze() {
-    if (isSubmitting) return;
-
-    const data  = collectData();
-    const error = validate(data);
-    if (error) { Toast.show('⚠️', error); return; }
-
-    isSubmitting = true;
-    setBtnLoading('btn-analisar-form', true);
-
-    try {
-      await persistLead();
-      Analysis.open();
-    } catch (err) {
-      Toast.show('⚠️', 'Não conseguimos registrar sua solicitação agora. Tente de novo.');
-    } finally {
-      setTimeout(() => {
-        isSubmitting = false;
-        setBtnLoading('btn-analisar-form', false);
-      }, 400);
+  // ---- Botão "Analisar perfil" — só dispara após o envio do form ----
+  function openAnalysisFromForm() {
+    if (!hasSubmitted) {
+      Toast.show('⚠️', 'Envie o formulário primeiro para liberar o diagnóstico.');
+      return;
     }
+    Analysis.open();
   }
 
   function setBtnLoading(id, loading) {
     const btn = document.getElementById(id);
     if (!btn) return;
     btn.classList.toggle('is-loading', loading);
-    btn.disabled = loading || (id === 'btn-analisar-form' && !isFormValid());
+    btn.disabled = loading;
   }
 
   // ---- API pública ----
@@ -270,7 +260,7 @@ const Form = (() => {
 
     document.getElementById('form-lead')?.addEventListener('submit', submit);
     document.getElementById('btn-submit')?.addEventListener('click', submit);
-    document.getElementById('btn-analisar-form')?.addEventListener('click', submitAndAnalyze);
+    document.getElementById('btn-analisar-form')?.addEventListener('click', openAnalysisFromForm);
 
     document.getElementById('btn-whatsapp')?.addEventListener('click', () => openWhatsApp());
 

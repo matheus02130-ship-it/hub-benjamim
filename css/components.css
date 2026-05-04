@@ -442,7 +442,7 @@
 
 /* Logo PNG invertida a branco no fundo escuro */
 .preloader__logo-img {
-  height: clamp(22px, 5vw, 30px);
+  height: clamp(30px, 7vw, 42px);
   width: auto;
   filter: brightness(0) invert(1);   /* converte antiluz (escuro) → branco */
   animation: fadeIn 0.5s var(--ease-out) 0.15s both;

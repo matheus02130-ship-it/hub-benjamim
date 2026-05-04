@@ -46,3 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
     Screens.navigateTo('form');
   });
 });
+
+// ---- Fix BFCache (Instagram / Safari in-app browser) ----
+// Quando o usuário fecha e reabre o link, o browser pode restaurar a página
+// do cache sem disparar DOMContentLoaded novamente. O pageshow com
+// event.persisted detecta esse caso e força um reload limpo.
+window.addEventListener('pageshow', (event) => {
+  if (event.persisted) {
+    window.location.reload();
+  }
+});

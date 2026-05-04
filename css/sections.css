@@ -16,7 +16,7 @@
 /* Logo centrada no hero — versão grande, acima do título */
 .hub__hero-logo {
   display: block;
-  height: 36px;
+  height: 22px;
   width: auto;
   user-select: none;
   -webkit-user-drag: none;
@@ -52,25 +52,16 @@
 }
 
 .hub__name {
-  font-family: var(--font-label);   /* Oswald — condensado, forte */
+  font-family: var(--font-label);   /* Oswald — condensado */
   font-style: normal;
-  font-weight: 500;
-  font-size: clamp(4rem, 16vw, 8.5rem);
-  line-height: 0.95;
-  letter-spacing: -0.01em;
+  font-weight: 400;
+  font-size: clamp(0.875rem, 2.5vw, 1.0625rem);
+  line-height: 1.4;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--ante-luz);
   text-align: center;
-}
-
-.hub__claim {
-  font-family: var(--font-body);    /* Archivo */
-  font-size: var(--text-body);
-  line-height: 1.65;
-  letter-spacing: 0.01em;
-  color: var(--color-text-muted);
-  max-width: 34ch;
-  text-align: center;
+  max-width: 32ch;
 }
 
 /* Badge "Site em manutenção" */
@@ -408,17 +399,22 @@
   max-width: 36ch;
 }
 
-/* Footer */
+/* Footer — reutiliza hub__footer em todas as telas */
 .confirm__footer {
-  border-top: 1px solid var(--color-border-soft);
-  padding-top: var(--space-md);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
+  padding-top: var(--space-sm);
+  padding-bottom: var(--space-xs);
+  border-top: 1px solid var(--color-border-soft);
 }
 
 .confirm__footer-text {
+  font-family: var(--font-label);
   font-size: var(--text-caption);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   color: var(--color-text-subtle);
 }
 
