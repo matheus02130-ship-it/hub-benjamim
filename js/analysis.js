@@ -41,7 +41,7 @@
 
 const Analysis = (() => {
 
-  const ANALYSIS_WEBHOOK = 'https://hook.us2.make.com/lnqixv2nrk3tyyt5prl33awvlnu2pnzv';
+  const ANALYSIS_WEBHOOK = 'https://estudiobenjamim.com.br/api/analyze';
   const REQUEST_TIMEOUT_MS = 20000;
 
   let handle = '';
