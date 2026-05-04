@@ -22,7 +22,7 @@
   <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;1,400&family=Oswald:wght@300;400;500&display=swap" rel="stylesheet">
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/reset.css">
@@ -45,6 +45,9 @@
     <div class="preloader__logo" aria-hidden="true">
       Benjamim<span class="preloader__dot">.</span>
     </div>
+    <div class="preloader__bar-wrap" aria-hidden="true">
+      <div class="preloader__bar"></div>
+    </div>
   </div>
 
 
@@ -62,6 +65,11 @@
     </header>
 
     <div class="hub__hero">
+      <div class="hub__maintenance" data-anim aria-label="Site em manutenção">
+        <span class="hub__maintenance-dot" aria-hidden="true"></span>
+        Site em manutenção
+      </div>
+
       <h1 class="hub__name" id="hub-heading" data-anim>
         Design<br>
         estratégico.
@@ -81,8 +89,16 @@
     </div>
 
     <footer class="hub__footer" data-anim>
-      <span class="hub__location">São Paulo, SP</span>
-      <span class="hub__copy">© 2026 Estúdio Benjamim</span>
+      <div class="hub__footer-top">
+        <span class="hub__footer-brand">Estúdio Benjamim</span>
+        <span class="hub__location">São Paulo, SP</span>
+      </div>
+      <nav class="hub__footer-social" aria-label="Redes sociais">
+        <a href="https://instagram.com/estudiobenjamim" class="hub__footer-link" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://behance.net/estudiobenjamim" class="hub__footer-link" target="_blank" rel="noopener noreferrer">Behance</a>
+        <a href="mailto:oi@estudiobenjamim.com.br" class="hub__footer-link">Contato</a>
+      </nav>
+      <span class="hub__copy">© 2026 Estúdio Benjamim. Todos os direitos reservados.</span>
     </footer>
   </main>
 

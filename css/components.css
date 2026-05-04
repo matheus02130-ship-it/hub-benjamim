@@ -174,7 +174,8 @@
 
 .field__input::placeholder,
 .field__textarea::placeholder {
-  color: var(--color-text-subtle);
+  color: rgba(10,10,10,0.22);
+  font-style: italic;
 }
 
 .field__input:focus,
@@ -408,12 +409,13 @@
 #preloader {
   position: fixed;
   inset: 0;
-  background: var(--neve);
+  background: var(--ante-luz);   /* fundo escuro — marca em destaque */
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  transition: opacity var(--dur-slow) var(--ease-out);
+  transition: opacity 0.6s var(--ease-out);
 }
 
 #preloader.is-hidden {
@@ -424,17 +426,44 @@
 .preloader__logo {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(2rem, 8vw, 3.5rem);
-  color: var(--ante-luz);
-  animation: fadeIn 0.4s var(--ease-out) forwards;
+  font-size: clamp(2.5rem, 10vw, 4.5rem);
+  color: var(--neve);
+  letter-spacing: -0.025em;
+  animation: fadeIn 0.5s var(--ease-out) 0.1s both;
 }
 
 .preloader__dot {
   display: inline-block;
-  animation: blink 1s ease-in-out infinite;
+  color: var(--azul-benjamim);   /* ponto azul Benjamim */
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
+/* Barra de progresso — ancorada na base do ecrã */
+.preloader__bar-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(255,255,255,0.06);
+  overflow: hidden;
+}
+
+.preloader__bar {
+  height: 100%;
+  width: 0%;
+  background: var(--azul-benjamim);
+  animation: preloaderFill 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes preloaderFill {
+  0%   { width: 0%; }
+  60%  { width: 75%; }
+  85%  { width: 90%; }
+  100% { width: 95%; }
+}
+
+/* Quando o preloader começa a sair, a barra fecha */
+#preloader.is-hidden .preloader__bar {
+  width: 100%;
+  transition: width 0.25s var(--ease-out);
 }

@@ -62,7 +62,7 @@
 
   --font-display: 'PP Editorial New', Georgia, serif;
   --font-label:   'Oswald', 'Arial Narrow', sans-serif;
-  --font-body:    'Helvetica Neue', Arial, sans-serif;
+  --font-body:    'Archivo', 'Helvetica Neue', Arial, sans-serif;
 
   /* Tamanhos fluidos */
   --text-hero:    clamp(2.5rem,  8vw, 6.5rem);

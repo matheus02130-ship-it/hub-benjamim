@@ -24,7 +24,7 @@
 
 .hub__logo {
   display: block;
-  height: 22px;
+  height: 28px;
   width: auto;
   user-select: none;
   -webkit-user-drag: none;
@@ -40,7 +40,7 @@
 
 .screen__brand img {
   display: block;
-  height: 22px;
+  height: 28px;
   width: auto;
   user-select: none;
   -webkit-user-drag: none;
@@ -59,23 +59,56 @@
 }
 
 .hub__name {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(3rem, 10vw, 5.5rem);
-  line-height: 0.9;
-  letter-spacing: -0.03em;
+  font-family: var(--font-label);   /* Oswald — condensado, forte */
+  font-style: normal;
+  font-weight: 500;
+  font-size: clamp(3.5rem, 13vw, 7rem);
+  line-height: 0.92;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
   color: var(--ante-luz);
   text-align: center;
 }
 
 .hub__claim {
-  font-family: var(--font-body);
+  font-family: var(--font-body);    /* Archivo */
   font-size: var(--text-body);
-  line-height: 1.55;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
   color: var(--color-text-muted);
-  max-width: 36ch;
+  max-width: 34ch;
   text-align: center;
+}
+
+/* Badge "Site em manutenção" */
+.hub__maintenance {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--color-text-subtle);
+  padding: 0.3rem 0.875rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+}
+
+.hub__maintenance-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--ambar);
+  flex-shrink: 0;
+  animation: maintPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes maintPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
 }
 
 /* CTAs */
@@ -87,24 +120,68 @@
   margin-top: var(--space-sm);
 }
 
-/* Footer do hub */
+/* Footer do hub — layout editorial, Petra Garmon–inspired */
 .hub__footer {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xs);
-  align-items: center;
+  gap: var(--space-sm);
   width: 100%;
   padding-top: var(--space-md);
   border-top: 1px solid var(--color-border-soft);
-  text-align: center;
 }
 
-.hub__location,
-.hub__copy {
+/* Linha 1: nome do estúdio + cidade */
+.hub__footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+}
+
+.hub__footer-brand {
+  font-family: var(--font-label);
+  font-size: var(--text-small);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ante-luz);
+}
+
+.hub__location {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-text-subtle);
+}
+
+/* Linha 2: links sociais */
+.hub__footer-social {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.hub__footer-link {
   font-family: var(--font-label);
   font-size: var(--text-label);
   text-transform: uppercase;
   letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.hub__footer-link:hover {
+  color: var(--azul-benjamim);
+}
+
+/* Linha 3: copyright */
+.hub__copy {
+  font-family: var(--font-label);
+  font-size: var(--text-caption);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   color: var(--color-text-subtle);
 }
 
@@ -164,6 +241,7 @@
   font-style: italic;
   font-size: var(--text-h2);
   line-height: 1.05;
+  letter-spacing: -0.025em;
   color: var(--ante-luz);
 }
 
@@ -171,7 +249,8 @@
   font-family: var(--font-body);
   font-size: var(--text-small);
   color: var(--color-text-muted);
-  line-height: 1.5;
+  line-height: 1.65;
+  letter-spacing: 0.005em;
   margin-top: var(--space-xs);
   max-width: 38ch;
 }
@@ -286,6 +365,7 @@
   font-style: italic;
   font-size: var(--text-h2);
   line-height: 1.05;
+  letter-spacing: -0.025em;
   color: var(--ante-luz);
 }
 
@@ -461,11 +541,10 @@
 
 .modal__logo {
   display: block;
-  height: 22px;
+  height: 28px;
   width: auto;
   user-select: none;
   -webkit-user-drag: none;
-  /* logo já é PNG em Ante Luz — sem opacidade, deixa normal */
 }
 
 /* Stepper de 4 passos — centralizado, barras Benjamim */
@@ -521,6 +600,7 @@
   font-size: var(--text-h2);
   color: var(--ante-luz);
   line-height: 1.05;
+  letter-spacing: -0.025em;
 }
 
 .modal-input__sub {
@@ -576,7 +656,8 @@
 }
 
 .modal-input__field::placeholder {
-  color: var(--color-text-subtle);
+  color: rgba(10,10,10,0.22);
+  font-style: italic;
 }
 
 .modal-input__field:focus {
@@ -635,6 +716,7 @@
   font-size: var(--text-h2);
   color: var(--ante-luz);
   line-height: 1.05;
+  letter-spacing: -0.025em;
 }
 
 .modal-confirm__sub {
@@ -794,6 +876,7 @@
   font-size: var(--text-h2);
   color: var(--ante-luz);
   line-height: 1.05;
+  letter-spacing: -0.025em;
   text-align: left;
   width: 100%;
 }

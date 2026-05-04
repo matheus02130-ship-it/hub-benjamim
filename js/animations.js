@@ -14,9 +14,17 @@ const Animations = (() => {
     if (!preloader) return;
 
     const dismiss = () => {
-      preloader.classList.add('is-hidden');
-      // Espera o transition de opacity terminar e remove do DOM
-      setTimeout(() => preloader.remove(), 700);
+      // Completa a barra antes de sair
+      const bar = preloader.querySelector('.preloader__bar');
+      if (bar) {
+        bar.style.transition = 'width 0.25s ease-out';
+        bar.style.width = '100%';
+      }
+      // Pequena pausa para a barra chegar a 100%, depois fade out
+      setTimeout(() => {
+        preloader.classList.add('is-hidden');
+        setTimeout(() => preloader.remove(), 700);
+      }, 260);
     };
 
     if (reducedMotion) {
@@ -24,8 +32,8 @@ const Animations = (() => {
       return;
     }
 
-    // Pequeno delay estético — garante que o nome do estúdio seja lido
-    setTimeout(dismiss, 600);
+    // Delay generoso — garante que a barra avança e o nome é lido
+    setTimeout(dismiss, 2200);
   }
 
   // ---- GSAP — só ativa se carregou ----
