@@ -13,21 +13,14 @@
   text-align: center;
 }
 
-/* Header do hub — logo no canto superior esquerdo (Ante Luz, sem opacidade) */
-.hub__header {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  padding-top: var(--space-md);
-}
-
-.hub__logo {
+/* Logo centrada no hero — versão grande, acima do título */
+.hub__hero-logo {
   display: block;
-  height: 28px;
+  height: 36px;
   width: auto;
   user-select: none;
   -webkit-user-drag: none;
+  margin-bottom: var(--space-xs);
 }
 
 /* ---- Logo top-left — usado no topo das telas form/confirm ---- */
@@ -62,9 +55,9 @@
   font-family: var(--font-label);   /* Oswald — condensado, forte */
   font-style: normal;
   font-weight: 500;
-  font-size: clamp(3.5rem, 13vw, 7rem);
-  line-height: 0.92;
-  letter-spacing: -0.015em;
+  font-size: clamp(4rem, 16vw, 8.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
   color: var(--ante-luz);
   text-align: center;
@@ -115,47 +108,36 @@
 .hub__actions {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--space-xs);
   width: 100%;
   margin-top: var(--space-sm);
 }
 
-/* Footer do hub — layout editorial, Petra Garmon–inspired */
+/* Manutenção — entre os botões e o footer */
+.hub__maintenance {
+  margin-top: var(--space-sm);
+}
+
+/* Footer do hub — single row, Petra Garmon style */
 .hub__footer {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  padding-top: var(--space-md);
+  padding-top: var(--space-sm);
+  padding-bottom: var(--space-xs);
   border-top: 1px solid var(--color-border-soft);
 }
 
-/* Linha 1: nome do estúdio + cidade */
-.hub__footer-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  width: 100%;
-}
-
-.hub__footer-brand {
+.hub__copy {
   font-family: var(--font-label);
-  font-size: var(--text-small);
-  font-weight: 500;
+  font-size: var(--text-caption);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--ante-luz);
-}
-
-.hub__location {
-  font-family: var(--font-label);
-  font-size: var(--text-label);
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.08em;
   color: var(--color-text-subtle);
 }
 
-/* Linha 2: links sociais */
 .hub__footer-social {
   display: flex;
   gap: var(--space-md);
@@ -164,9 +146,9 @@
 
 .hub__footer-link {
   font-family: var(--font-label);
-  font-size: var(--text-label);
+  font-size: var(--text-caption);
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.10em;
   color: var(--color-text-muted);
   text-decoration: none;
   transition: color var(--dur-fast) var(--ease-out);
@@ -174,15 +156,6 @@
 
 .hub__footer-link:hover {
   color: var(--azul-benjamim);
-}
-
-/* Linha 3: copyright */
-.hub__copy {
-  font-family: var(--font-label);
-  font-size: var(--text-caption);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-text-subtle);
 }
 
 /* ============================================================
@@ -239,8 +212,8 @@
 .form__title {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: var(--text-h2);
-  line-height: 1.05;
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
+  line-height: 1.25;
   letter-spacing: -0.025em;
   color: var(--ante-luz);
 }
@@ -267,6 +240,7 @@
   margin-top: var(--space-lg);
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--space-sm);
   width: 100%;
 }
@@ -363,8 +337,8 @@
 .confirm__title {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: var(--text-h2);
-  line-height: 1.05;
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
+  line-height: 1.25;
   letter-spacing: -0.025em;
   color: var(--ante-luz);
 }
@@ -503,17 +477,17 @@
   to   { transform: translateY(0); }
 }
 
-/* Header sticky no topo do sheet: marca à esquerda, close à direita */
+/* Header sticky no topo do sheet: apenas close à direita */
 .modal__head {
   position: sticky;
   top: 0;
   align-self: stretch;
   margin: 0 calc(var(--screen-padding) * -1) var(--space-md);
-  height: 64px;
+  height: 56px;
   padding: 0 var(--screen-padding);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   background: var(--gelo);
   border-top-left-radius: 28px;
   border-top-right-radius: 28px;
@@ -597,9 +571,9 @@
 .modal-input__title {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: var(--text-h2);
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
   color: var(--ante-luz);
-  line-height: 1.05;
+  line-height: 1.25;
   letter-spacing: -0.025em;
 }
 
@@ -713,9 +687,9 @@
 .modal-confirm__title {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: var(--text-h2);
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
   color: var(--ante-luz);
-  line-height: 1.05;
+  line-height: 1.25;
   letter-spacing: -0.025em;
 }
 
@@ -873,9 +847,9 @@
 .modal-result__title {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: var(--text-h2);
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
   color: var(--ante-luz);
-  line-height: 1.05;
+  line-height: 1.25;
   letter-spacing: -0.025em;
   text-align: left;
   width: 100%;

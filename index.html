@@ -42,9 +42,7 @@
        PRELOADER
   ====================================================== -->
   <div id="preloader" role="status" aria-live="polite" aria-label="Carregando">
-    <div class="preloader__logo" aria-hidden="true">
-      Benjamim<span class="preloader__dot">.</span>
-    </div>
+    <img class="preloader__logo-img" src="assets/img/logo/benjamim-antiluz.png" alt="" aria-hidden="true" decoding="async">
     <div class="preloader__bar-wrap" aria-hidden="true">
       <div class="preloader__bar"></div>
     </div>
@@ -55,20 +53,15 @@
        SCREEN 1 — HUB
   ====================================================== -->
   <main class="screen" id="screen-hub" aria-labelledby="hub-heading">
-    <header class="hub__header" data-anim>
-      <img
-        class="hub__logo"
-        src="assets/img/logo/benjamim-antiluz.png"
-        alt="Estúdio Benjamim"
-        decoding="auto"
-      >
-    </header>
 
     <div class="hub__hero">
-      <div class="hub__maintenance" data-anim aria-label="Site em manutenção">
-        <span class="hub__maintenance-dot" aria-hidden="true"></span>
-        Site em manutenção
-      </div>
+      <img
+        class="hub__hero-logo"
+        src="assets/img/logo/benjamim-antiluz.png"
+        alt="Estúdio Benjamim"
+        data-anim
+        decoding="async"
+      >
 
       <h1 class="hub__name" id="hub-heading" data-anim>
         Design<br>
@@ -86,19 +79,19 @@
           <span class="btn-text">Tirar uma dúvida</span>
         </button>
       </div>
+
+      <div class="hub__maintenance" data-anim aria-label="Site em manutenção">
+        <span class="hub__maintenance-dot" aria-hidden="true"></span>
+        Site em manutenção
+      </div>
     </div>
 
     <footer class="hub__footer" data-anim>
-      <div class="hub__footer-top">
-        <span class="hub__footer-brand">Estúdio Benjamim</span>
-        <span class="hub__location">São Paulo, SP</span>
-      </div>
+      <span class="hub__copy">© 2026 – Todos os Direitos Reservados</span>
       <nav class="hub__footer-social" aria-label="Redes sociais">
         <a href="https://instagram.com/estudiobenjamim" class="hub__footer-link" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a href="https://behance.net/estudiobenjamim" class="hub__footer-link" target="_blank" rel="noopener noreferrer">Behance</a>
-        <a href="mailto:oi@estudiobenjamim.com.br" class="hub__footer-link">Contato</a>
       </nav>
-      <span class="hub__copy">© 2026 Estúdio Benjamim. Todos os direitos reservados.</span>
     </footer>
   </main>
 
@@ -317,10 +310,8 @@
   >
    <div class="modal__sheet">
 
-    <!-- Header sticky no topo do sheet: marca à esquerda, close à direita -->
+    <!-- Header sticky no topo do sheet: apenas close -->
     <header class="modal__head">
-      <img class="modal__logo" src="assets/img/logo/benjamim-antiluz.png" alt="Estúdio Benjamim" decoding="async">
-
       <button type="button" class="modal__close" id="btn-modal-close" aria-label="Fechar diagnóstico">
         <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
           <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>

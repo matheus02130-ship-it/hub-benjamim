@@ -3,7 +3,7 @@
    ============================================================ */
 
 /* ============================================================
-   BOTÕES
+   BOTÕES — Liquid Glass 3D
    ============================================================ */
 
 .btn {
@@ -11,8 +11,11 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-xs);
-  width: 100%;
-  padding: 0.75rem 1.5rem;
+  /* Largura controlada — não mais 100% */
+  width: auto;
+  min-width: 210px;
+  max-width: 300px;
+  padding: 0.875rem 2rem;
   font-family: var(--font-label);
   font-size: var(--text-label);
   font-weight: 500;
@@ -22,61 +25,80 @@
   border-radius: var(--radius-btn);
   cursor: pointer;
   position: relative;
-  overflow: hidden;
-  transition: color var(--dur-normal) var(--ease-out),
-              border-color var(--dur-normal) var(--ease-out);
   white-space: nowrap;
+  /* Transição principal */
+  transition: transform 0.18s var(--ease-spring),
+              box-shadow 0.18s var(--ease-spring),
+              background 0.18s var(--ease-out);
 }
 
-/* Fill da esquerda no hover */
-.btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform var(--dur-normal) var(--ease-spring);
-}
-
-.btn:hover::before {
-  transform: scaleX(1);
-}
-
-/* Texto e spinner ficam acima do ::before */
-.btn .btn-text,
-.btn .btn-spinner {
-  position: relative;
-  z-index: 1;
-}
-
-/* Primário — azul sólido */
+/* Primário — Liquid Glass azul com profundidade real */
 .btn--primary {
-  background: var(--azul-benjamim);
   color: var(--neve);
-}
-
-.btn--primary::before {
-  background: var(--azul-digital);
+  background: rgba(30, 58, 232, 0.92);
+  -webkit-backdrop-filter: blur(16px) saturate(200%);
+  backdrop-filter: blur(16px) saturate(200%);
+  border: 1px solid rgba(80, 110, 255, 0.55);
+  box-shadow:
+    0 1px 0 inset rgba(255,255,255,0.22),
+    0 -1px 0 inset rgba(0,0,0,0.20),
+    0 4px 24px rgba(30,58,232,0.42),
+    0 2px 6px rgba(30,58,232,0.28),
+    0 1px 2px rgba(0,0,0,0.18);
 }
 
 .btn--primary:hover {
-  color: var(--neve);
+  background: rgba(30, 58, 232, 0.98);
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 0 inset rgba(255,255,255,0.30),
+    0 -1px 0 inset rgba(0,0,0,0.20),
+    0 10px 40px rgba(30,58,232,0.52),
+    0 4px 16px rgba(30,58,232,0.36),
+    0 2px 6px rgba(0,0,0,0.16);
 }
 
-/* Secundário — outline em Ante Luz no fundo Neve */
+.btn--primary:active {
+  transform: translateY(1px);
+  box-shadow:
+    0 1px 0 inset rgba(255,255,255,0.14),
+    0 -1px 0 inset rgba(0,0,0,0.25),
+    0 2px 8px rgba(30,58,232,0.30),
+    0 1px 2px rgba(0,0,0,0.14);
+}
+
+/* Secundário — Liquid Glass branco/névoa */
 .btn--secondary {
-  background: transparent;
   color: var(--ante-luz);
-  border: 1px solid rgba(10,10,10,0.20);
-}
-
-.btn--secondary::before {
-  background: var(--ante-luz);
+  background: rgba(255,255,255,0.52);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.88);
+  box-shadow:
+    0 1px 0 inset rgba(255,255,255,0.96),
+    0 -1px 0 inset rgba(10,10,10,0.05),
+    0 4px 18px rgba(10,10,10,0.09),
+    0 2px 6px rgba(10,10,10,0.05),
+    0 1px 2px rgba(0,0,0,0.06);
 }
 
 .btn--secondary:hover {
-  color: var(--neve);
-  border-color: var(--ante-luz);
+  background: rgba(255,255,255,0.72);
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 0 inset rgba(255,255,255,1),
+    0 -1px 0 inset rgba(10,10,10,0.05),
+    0 10px 32px rgba(10,10,10,0.12),
+    0 4px 12px rgba(10,10,10,0.08),
+    0 2px 4px rgba(0,0,0,0.06);
+}
+
+.btn--secondary:active {
+  transform: translateY(1px);
+  box-shadow:
+    0 1px 0 inset rgba(255,255,255,0.82),
+    0 -1px 0 inset rgba(10,10,10,0.07),
+    0 2px 6px rgba(10,10,10,0.06);
 }
 
 /* Ghost — sem borda */
@@ -84,14 +106,14 @@
   background: transparent;
   color: var(--color-text-muted);
   padding: 0.625rem 1.25rem;
-}
-
-.btn--ghost::before {
-  background: rgba(10,10,10,0.04);
+  min-width: auto;
+  border: none;
+  box-shadow: none;
 }
 
 .btn--ghost:hover {
   color: var(--ante-luz);
+  background: rgba(10,10,10,0.04);
 }
 
 /* Disabled */
@@ -102,7 +124,7 @@
   pointer-events: none;
 }
 
-/* Ícone spinner dentro do botão */
+/* Spinner dentro do botão */
 .btn .btn-spinner {
   width: 14px;
   height: 14px;
@@ -119,13 +141,8 @@
   border-top-color: var(--ante-luz);
 }
 
-.btn.is-loading .btn-spinner {
-  display: block;
-}
-
-.btn.is-loading .btn-text {
-  opacity: 0.5;
-}
+.btn.is-loading .btn-spinner { display: block; }
+.btn.is-loading .btn-text    { opacity: 0.5; }
 
 /* ============================================================
    CAMPOS DE FORMULÁRIO
@@ -423,18 +440,14 @@
   pointer-events: none;
 }
 
-.preloader__logo {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: clamp(2.5rem, 10vw, 4.5rem);
-  color: var(--neve);
-  letter-spacing: -0.025em;
-  animation: fadeIn 0.5s var(--ease-out) 0.1s both;
-}
-
-.preloader__dot {
-  display: inline-block;
-  color: var(--azul-benjamim);   /* ponto azul Benjamim */
+/* Logo PNG invertida a branco no fundo escuro */
+.preloader__logo-img {
+  height: clamp(22px, 5vw, 30px);
+  width: auto;
+  filter: brightness(0) invert(1);   /* converte antiluz (escuro) → branco */
+  animation: fadeIn 0.5s var(--ease-out) 0.15s both;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 /* Barra de progresso — ancorada na base do ecrã */
