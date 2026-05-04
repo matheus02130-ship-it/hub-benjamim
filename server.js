@@ -1,6 +1,6 @@
-// server.js — DIAGNÓSTICO MÍNIMO
-// Zero imports externos, zero complexidade
-import http from 'http';
+// server.js — DIAGNÓSTICO MÍNIMO (CommonJS)
+'use strict';
+const http = require('http');
 
 const PORT = process.env.PORT || 3000;
 
@@ -30,6 +30,6 @@ server.on('error', (err) => {
   process.exit(1);
 });
 
-server.listen(PORT, () => {
+server.listen(PORT, '0.0.0.0', () => {
   process.stdout.write('[BOOT] escutando na porta ' + PORT + '\n');
 });
