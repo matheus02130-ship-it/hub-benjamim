@@ -7,7 +7,7 @@
     "node": "18.x"
   },
   "scripts": {
-    "build": "echo 'no build step'",
+    "build": "npm install --omit=dev",
     "start": "node server.js"
   },
   "dependencies": {
