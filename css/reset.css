@@ -1,0 +1,110 @@
+/* ============================================================
+   RESET.CSS
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--color-text);
+  /* Gradient sutil — dá presença para o backdrop-filter dos cards glass */
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 0%,   rgba(30, 58, 232, 0.06), transparent 60%),
+    radial-gradient(ellipse 70% 55% at 90% 100%, rgba(0, 50, 160, 0.045), transparent 55%),
+    var(--color-bg);
+  background-attachment: fixed;
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100dvh;
+}
+
+img, video, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+  appearance: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+  display: block;
+}
+
+select option {
+  background: var(--neve);
+  color: var(--ante-luz);
+}
+
+/* Acessibilidade — texto escondido visualmente, lido por screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Foco visível padronizado — só aparece em navegação por teclado */
+:focus-visible {
+  outline: 2px solid var(--azul-digital);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Remove o foco padrão visual em elementos que já têm tratamento próprio
+   (inputs/select/textarea trocam border-color no :focus) */
+.field__input:focus-visible,
+.field__select:focus-visible,
+.field__textarea:focus-visible,
+.modal-input__field:focus-visible {
+  outline: none;
+}

@@ -1,0 +1,158 @@
+/* ============================================================
+   TOKENS.CSS — Design System do Estúdio Benjamim
+   Hub Benjamim v1.0
+   ============================================================ */
+
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../assets/fonts/PPEditorialNew-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Editorial New';
+  src: url('../assets/fonts/PPEditorialNew-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+
+  /* ============================================================
+     CORES
+     ============================================================ */
+
+  /* Azuis */
+  --azul-benjamim:   #1E3AE8;  /* principal, botões primários */
+  --azul-digital:    #284AFF;  /* hover, gradientes */
+  --azul-crepusculo: #0032A0;  /* deep, pressed state */
+
+  /* Neutros */
+  --ante-luz:  #0A0A0A;  /* fundo escuro, texto principal */
+  --cinza-900: #111111;
+  --cinza-700: #333333;
+  --cinza-500: #666666;
+  --cinza-300: #999999;
+  --cinza-100: #E5E5E5;
+  --gelo:      #F3F6FD;  /* fundo claro alternativo */
+  --neve:      #FFFFFF;  /* branco puro */
+
+  /* Acento */
+  --ambar: #F5C842;
+
+  /* Aliases semânticos — TEMA CLARO
+     Fundo Neve, texto Ante Luz, acento Azul Benjamim. */
+  --color-bg:           var(--neve);
+  --color-bg-light:     var(--gelo);
+  --color-text:         var(--ante-luz);
+  --color-text-muted:   rgba(10,10,10,0.55);
+  --color-text-subtle:  rgba(10,10,10,0.40);
+  --color-accent:       var(--azul-benjamim);
+  --color-accent-hover: var(--azul-digital);
+  --color-border:       rgba(10,10,10,0.10);
+  --color-border-soft:  rgba(10,10,10,0.06);
+  --color-surface:      rgba(10,10,10,0.025);
+
+  /* ============================================================
+     TIPOGRAFIA
+     ============================================================ */
+
+  --font-display: 'PP Editorial New', Georgia, serif;
+  --font-label:   'Oswald', 'Arial Narrow', sans-serif;
+  --font-body:    'Helvetica Neue', Arial, sans-serif;
+
+  /* Tamanhos fluidos */
+  --text-hero:    clamp(2.5rem,  8vw, 6.5rem);
+  --text-h1:      clamp(2rem,    5vw, 4rem);
+  --text-h2:      clamp(1.5rem,  3vw, 2.5rem);
+  --text-h3:      clamp(1.125rem,2vw, 1.5rem);
+  --text-body:    clamp(0.938rem,1.5vw, 1.0625rem);
+  --text-small:   clamp(0.8125rem,1vw, 0.875rem);
+  --text-caption: 0.75rem;
+  --text-label:   0.6875rem;
+
+  /* ============================================================
+     ESPAÇAMENTO
+     ============================================================ */
+
+  --space-2xs: 0.25rem;
+  --space-xs:  0.5rem;
+  --space-sm:  1rem;
+  --space-md:  1.5rem;
+  --space-lg:  2.5rem;
+  --space-xl:  4rem;
+  --space-2xl: 6rem;
+  --space-3xl: 8rem;
+
+  /* ============================================================
+     LAYOUT
+     ============================================================ */
+
+  --container-max:     480px;    /* hub é coluna centralizada */
+  --container-padding: 1.5rem;
+  --screen-padding:    clamp(1.5rem, 5vw, 2.5rem);
+
+  /* ============================================================
+     ANIMAÇÃO
+     ============================================================ */
+
+  --ease-spring:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out:     cubic-bezier(0.0, 0.0, 0.2, 1);
+  --ease-in-out:  cubic-bezier(0.65, 0, 0.35, 1);
+
+  --dur-fast:   0.15s;
+  --dur-normal: 0.35s;
+  --dur-slow:   0.65s;
+  --dur-enter:  0.5s;
+
+  /* ============================================================
+     BORDAS & SOMBRAS
+     ============================================================ */
+
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  16px;
+  --radius-pill: 999px;
+  --radius-btn: 8px;     /* arredondamento padrão dos botões */
+
+  --shadow-sm: 0 1px 2px rgba(10,10,10,0.05);
+  --shadow-md: 0 4px 16px rgba(10,10,10,0.08);
+  --shadow-glow: 0 0 40px rgba(30,58,232,0.18);
+
+  /* ============================================================
+     LIQUID GLASS — usado em cards e campos
+     Para o blur funcionar visualmente, o fundo da screen precisa
+     ter cor (gradient sutil em gelo/azul claro) — ver base.css.
+     ============================================================ */
+  --glass-bg:        rgba(243, 246, 253, 0.55);   /* gelo translúcido */
+  --glass-bg-strong: rgba(243, 246, 253, 0.78);
+  --glass-border:    rgba(255, 255, 255, 0.85);   /* highlight do vidro */
+  --glass-border-edge: rgba(10, 10, 10, 0.06);     /* sombra interna sutil */
+  --glass-blur:      saturate(180%) blur(22px);
+  --glass-shadow:
+    0 1px 0 inset rgba(255, 255, 255, 0.9),
+    0 -1px 0 inset rgba(10, 10, 10, 0.04),
+    0 8px 24px rgba(10, 10, 10, 0.06),
+    0 2px 8px rgba(30, 58, 232, 0.04);
+
+  --glass-bg-active:    rgba(255, 255, 255, 0.65);
+  --glass-shadow-hover:
+    0 1px 0 inset rgba(255, 255, 255, 1),
+    0 -1px 0 inset rgba(10, 10, 10, 0.05),
+    0 12px 32px rgba(10, 10, 10, 0.08),
+    0 4px 16px rgba(30, 58, 232, 0.08);
+
+  /* ============================================================
+     Z-INDEX
+     ============================================================ */
+
+  --z-base:    0;
+  --z-above:   10;
+  --z-nav:     100;
+  --z-overlay: 200;
+  --z-modal:   300;
+  --z-toast:   400;
+}

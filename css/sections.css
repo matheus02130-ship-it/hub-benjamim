@@ -1,0 +1,926 @@
+/* ============================================================
+   SECTIONS.CSS — As 4 telas do Hub Benjamim
+   ============================================================ */
+
+/* ============================================================
+   SCREEN 1 — HUB (tela principal)
+   ============================================================ */
+
+#screen-hub {
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  text-align: center;
+}
+
+/* Header do hub — logo no canto superior esquerdo (Ante Luz, sem opacidade) */
+.hub__header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding-top: var(--space-md);
+}
+
+.hub__logo {
+  display: block;
+  height: 22px;
+  width: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* ---- Logo top-left — usado no topo das telas form/confirm ---- */
+.screen__brand {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin-bottom: var(--space-md);
+}
+
+.screen__brand img {
+  display: block;
+  height: 22px;
+  width: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Hero do hub */
+.hub__hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  padding: var(--space-xl) 0;
+  width: 100%;
+}
+
+.hub__name {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(3rem, 10vw, 5.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--ante-luz);
+  text-align: center;
+}
+
+.hub__claim {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  max-width: 36ch;
+  text-align: center;
+}
+
+/* CTAs */
+.hub__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  width: 100%;
+  margin-top: var(--space-sm);
+}
+
+/* Footer do hub */
+.hub__footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  align-items: center;
+  width: 100%;
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border-soft);
+  text-align: center;
+}
+
+.hub__location,
+.hub__copy {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-subtle);
+}
+
+/* ============================================================
+   SCREEN 2 — FORMULÁRIO
+   ============================================================ */
+
+#screen-form {
+  background: transparent;
+  justify-content: flex-start;
+  gap: 0;
+  align-items: center;
+}
+
+.form__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-lg);
+  text-align: center;
+  align-items: center;
+}
+
+.form__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: 0;
+  background: none;
+  border: none;
+  margin-bottom: var(--space-md);
+  align-self: flex-start;
+  transition: color var(--dur-fast);
+}
+
+.form__back:hover {
+  color: var(--ante-luz);
+}
+
+.form__back-arrow {
+  font-size: 0.875rem;
+  transition: transform var(--dur-fast) var(--ease-spring);
+}
+
+.form__back:hover .form__back-arrow {
+  transform: translateX(-3px);
+}
+
+.form__title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-h2);
+  line-height: 1.05;
+  color: var(--ante-luz);
+}
+
+.form__subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-top: var(--space-xs);
+  max-width: 38ch;
+}
+
+.form__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  flex: 1;
+  width: 100%;
+}
+
+.form__footer {
+  margin-top: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  width: 100%;
+}
+
+.form__note {
+  text-align: center;
+  font-size: var(--text-caption);
+  color: var(--color-text-subtle);
+  line-height: 1.5;
+}
+
+/* ---- Bloco "Analisar perfil" no formulário ---- */
+.form__analysis {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  width: 100%;
+  margin-top: var(--space-md);
+}
+
+.form__analysis-rule {
+  width: 100%;
+  height: 1px;
+  border: none;
+  background: var(--color-border-soft);
+  margin: 0 0 var(--space-xs);
+}
+
+.form__analysis-eyebrow {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--azul-benjamim);
+}
+
+.form__analysis-copy {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  text-align: center;
+  max-width: 38ch;
+  transition: color var(--dur-normal) var(--ease-out);
+}
+
+/* Quando o form fica válido, o botão recebe .is-ready
+   e a copy fica mais firme */
+.form__analysis .btn.is-ready ~ * {}
+.form__analysis:has(.is-ready) .form__analysis-copy {
+  color: var(--ante-luz);
+}
+
+/* ============================================================
+   SCREEN 3 — CONFIRMAÇÃO
+   ============================================================ */
+
+#screen-confirm {
+  background: transparent;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.confirm__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  align-items: center;
+  width: 100%;
+}
+
+.confirm__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(30,58,232,0.10);
+  border: 1px solid rgba(30,58,232,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-xs);
+}
+
+.confirm__icon-inner {
+  width: 16px;
+  height: 10px;
+  border-left: 2px solid var(--azul-benjamim);
+  border-bottom: 2px solid var(--azul-benjamim);
+  transform: rotate(-45deg) translateY(-2px);
+}
+
+.confirm__title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-h2);
+  line-height: 1.05;
+  color: var(--ante-luz);
+}
+
+.confirm__subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  max-width: 38ch;
+}
+
+/* Blocos de ação */
+.confirm__blocks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  flex: 1;
+  justify-content: center;
+  width: 100%;
+}
+
+.confirm__block {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  align-items: center;
+  text-align: center;
+  transition: background var(--dur-normal) var(--ease-out),
+              box-shadow var(--dur-normal) var(--ease-out),
+              transform var(--dur-normal) var(--ease-spring);
+}
+
+.confirm__block:hover {
+  background: var(--glass-bg-active);
+  box-shadow: var(--glass-shadow-hover);
+  transform: translateY(-2px);
+}
+
+.confirm__block-label {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--azul-benjamim);
+}
+
+.confirm__block-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-h3);
+  color: var(--ante-luz);
+  line-height: 1.1;
+}
+
+.confirm__block-sub {
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  max-width: 36ch;
+}
+
+/* Footer */
+.confirm__footer {
+  border-top: 1px solid var(--color-border-soft);
+  padding-top: var(--space-md);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.confirm__footer-text {
+  font-size: var(--text-caption);
+  color: var(--color-text-subtle);
+}
+
+/* ============================================================
+   MODAL — ANÁLISE DE PERFIL
+   ============================================================ */
+
+/* Backdrop escuro — fundo (form) fica visível, levemente escurecido */
+#modal-analysis {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.55);
+  z-index: var(--z-modal);
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: stretch;
+  padding: 0;
+  overflow: hidden;
+}
+
+#modal-analysis.is-open {
+  display: flex;
+  animation: fadeIn var(--dur-normal) var(--ease-out) forwards;
+}
+
+/* Sheet — card ancorado no fundo, sobe até pouco acima do meio */
+.modal__sheet {
+  width: 100%;
+  max-width: 640px;
+  margin-inline: auto;
+  max-height: 92dvh;
+  min-height: 72dvh;
+  background: var(--gelo);
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+  padding: 0 var(--screen-padding) var(--screen-padding);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 -8px 40px rgba(10, 10, 10, 0.18);
+  animation: slideUpSheet var(--dur-slow) var(--ease-spring) forwards;
+
+  /* Liquid glass NEVE — cards/inputs no fundo Gelo ficam translúcidos brancos */
+  --glass-bg:        rgba(255, 255, 255, 0.65);
+  --glass-bg-active: rgba(255, 255, 255, 0.85);
+  --glass-border:    rgba(255, 255, 255, 0.95);
+}
+
+@keyframes slideUpSheet {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+/* Header sticky no topo do sheet: marca à esquerda, close à direita */
+.modal__head {
+  position: sticky;
+  top: 0;
+  align-self: stretch;
+  margin: 0 calc(var(--screen-padding) * -1) var(--space-md);
+  height: 64px;
+  padding: 0 var(--screen-padding);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--gelo);
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+  z-index: 5;
+}
+
+.modal__close {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--ante-luz);
+  transition: color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+
+.modal__close:hover {
+  color: var(--azul-benjamim);
+  transform: scale(1.1);
+}
+
+.modal__logo {
+  display: block;
+  height: 22px;
+  width: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+  /* logo já é PNG em Ante Luz — sem opacidade, deixa normal */
+}
+
+/* Stepper de 4 passos — centralizado, barras Benjamim */
+.modal__stepper {
+  display: flex;
+  gap: 8px;
+  padding: 0;
+  margin: 0 auto var(--space-lg);
+  width: 100%;
+  max-width: 480px;
+  justify-content: center;
+}
+
+.modal__step {
+  display: block;
+  width: 44px;
+  height: 4px;
+  background: rgba(10, 10, 10, 0.10);
+  border-radius: 2px;
+  transition: background var(--dur-normal) var(--ease-out);
+}
+
+.modal__stepper[data-step="1"] .modal__step:nth-child(-n+1),
+.modal__stepper[data-step="2"] .modal__step:nth-child(-n+2),
+.modal__stepper[data-step="3"] .modal__step:nth-child(-n+3),
+.modal__stepper[data-step="4"] .modal__step:nth-child(-n+4) {
+  background: var(--azul-benjamim);
+}
+
+/* Sub-telas do modal */
+.modal-screen {
+  display: none;
+  flex-direction: column;
+  gap: var(--space-md);
+  width: 100%;
+  max-width: 480px;
+  margin-inline: auto;
+  align-items: center;
+  text-align: center;
+}
+
+.modal-screen.is-active {
+  display: flex;
+  animation: fadeIn var(--dur-normal) var(--ease-out) forwards;
+}
+
+/* ----------------------------------------------------------
+   PASSO 1 — Input do @handle
+   ---------------------------------------------------------- */
+.modal-input__title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-h2);
+  color: var(--ante-luz);
+  line-height: 1.05;
+}
+
+.modal-input__sub {
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  max-width: 38ch;
+}
+
+.modal-input__field-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15em;
+  width: 100%;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius-md);
+  padding: 0.875rem 1rem;
+  transition: border-color var(--dur-fast), background var(--dur-fast),
+              box-shadow var(--dur-fast);
+}
+
+.modal-input__field-wrap:focus-within {
+  border-color: var(--azul-benjamim);
+  background: var(--glass-bg-active);
+  box-shadow: var(--glass-shadow-hover);
+}
+
+.modal-input__at {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 500;
+  color: var(--ante-luz);
+  line-height: 1;
+  user-select: none;
+}
+
+.modal-input__field {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--ante-luz);
+  text-align: left;
+  width: 14ch;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.modal-input__field::placeholder {
+  color: var(--color-text-subtle);
+}
+
+.modal-input__field:focus {
+  outline: none;
+}
+
+.modal-input__disclaimer {
+  font-size: var(--text-caption);
+  color: var(--color-text-subtle);
+  text-align: center;
+  line-height: 1.5;
+  max-width: 36ch;
+}
+
+/* ----------------------------------------------------------
+   PASSO 2 — Loading
+   ---------------------------------------------------------- */
+.modal-loading {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-lg);
+  min-height: 50dvh;
+}
+
+.modal-loading__spinner {
+  width: 48px;
+  height: 48px;
+  border: 2px solid rgba(30,58,232,0.18);
+  border-top-color: var(--azul-benjamim);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+.modal-loading__title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-h3);
+  color: var(--ante-luz);
+}
+
+.modal-loading__sub {
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+
+/* ----------------------------------------------------------
+   PASSO 3 — Confirmação do perfil
+   ---------------------------------------------------------- */
+.modal-confirm__title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-h2);
+  color: var(--ante-luz);
+  line-height: 1.05;
+}
+
+.modal-confirm__sub {
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  max-width: 38ch;
+}
+
+.modal-confirm__cta {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: var(--space-xs);
+  width: 100%;
+}
+
+/* Card do perfil */
+.profile-card {
+  width: 100%;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-align: left;
+}
+
+.profile-card__head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem var(--space-md);
+  background: var(--azul-benjamim);
+  color: var(--neve);
+}
+
+.profile-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-card__label {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.profile-card__identity {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+}
+
+.profile-card__avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--gelo);
+  border: 1px solid var(--color-border-soft);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.profile-card__avatar.has-image {
+  border-color: rgba(30,58,232,0.30);
+}
+
+.profile-card__avatar-fallback {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--color-text-subtle);
+  text-transform: uppercase;
+}
+
+.profile-card__avatar.has-image .profile-card__avatar-fallback {
+  display: none;
+}
+
+.profile-card__name-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.profile-card__name {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 600;
+  color: var(--ante-luz);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profile-card__handle {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+  line-height: 1.2;
+}
+
+.profile-card__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--color-border-soft);
+}
+
+.profile-card__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.125rem;
+  padding: var(--space-sm) 0.5rem;
+}
+
+.profile-card__stat + .profile-card__stat {
+  border-left: 1px solid var(--color-border-soft);
+}
+
+.profile-card__stat-value {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.375rem;
+  color: var(--ante-luz);
+  line-height: 1;
+}
+
+.profile-card__stat-label {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+}
+
+/* ----------------------------------------------------------
+   PASSO 4 — Diagnóstico (insights)
+   ---------------------------------------------------------- */
+.modal-result__title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-h2);
+  color: var(--ante-luz);
+  line-height: 1.05;
+  text-align: left;
+  width: 100%;
+}
+
+/* Card de insight */
+.insight-card {
+  width: 100%;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  text-align: left;
+}
+
+.insight-card__head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.insight-card__icon {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background: rgba(30, 58, 232, 0.10);
+  color: var(--azul-benjamim);
+  flex-shrink: 0;
+}
+
+.insight-card__title {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 600;
+  color: var(--ante-luz);
+  line-height: 1.2;
+}
+
+.insight-card__copy {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}
+
+/* Mini-preview de post (dentro do insight de posts) */
+.insight-post {
+  display: flex;
+  gap: var(--space-sm);
+  padding: var(--space-sm);
+  background: rgba(10, 10, 10, 0.025);
+  border-radius: var(--radius-md);
+  align-items: flex-start;
+}
+
+.insight-post__thumb {
+  width: 56px;
+  height: 56px;
+  background-color: var(--cinza-100);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+.insight-post__meta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  min-width: 0;
+}
+
+.insight-post__stats {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.insight-post__stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  color: var(--azul-benjamim);
+}
+
+.insight-post__caption {
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Copy de fechamento + CTAs */
+.modal-result__copy {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-h3);
+  color: var(--ante-luz);
+  line-height: 1.2;
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border-soft);
+  text-align: center;
+  max-width: 32ch;
+  margin-inline: auto;
+  width: 100%;
+}
+
+.modal-result__cta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding-bottom: var(--space-xl);
+  width: 100%;
+}

@@ -1,0 +1,130 @@
+/* ============================================================
+   BASE.CSS — Estilos globais e utilitários
+   ============================================================ */
+
+/* ---- Layout ---- */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* ---- Screens ---- */
+
+.screen {
+  display: none;
+  min-height: 100dvh;
+  flex-direction: column;
+  padding: var(--screen-padding);
+  position: relative;
+  overflow: hidden;
+}
+
+.screen.is-active {
+  display: flex;
+}
+
+/* ---- Tipografia ---- */
+
+.display {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--text-hero);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--text-h1);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--text-h2);
+  line-height: 1.1;
+}
+
+.label-text {
+  font-family: var(--font-label);
+  font-weight: 400;
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+}
+
+.body-text {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+.caption {
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  line-height: 1.4;
+  color: var(--color-text-muted);
+}
+
+/* ---- Noise grain overlay (sutil, em fundo claro fica pelagem) ---- */
+
+.screen::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 150px;
+  z-index: var(--z-above);
+}
+
+/* ---- Divider ---- */
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--color-border);
+  margin: var(--space-md) 0;
+}
+
+/* ---- Animações de entrada ---- */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+[data-anim] {
+  opacity: 0;
+}
+
+[data-anim].is-visible {
+  animation: fadeUp var(--dur-enter) var(--ease-spring) forwards;
+}

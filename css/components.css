@@ -1,0 +1,440 @@
+/* ============================================================
+   COMPONENTS.CSS — Botões, campos, toasts, badges
+   ============================================================ */
+
+/* ============================================================
+   BOTÕES
+   ============================================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: color var(--dur-normal) var(--ease-out),
+              border-color var(--dur-normal) var(--ease-out);
+  white-space: nowrap;
+}
+
+/* Fill da esquerda no hover */
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur-normal) var(--ease-spring);
+}
+
+.btn:hover::before {
+  transform: scaleX(1);
+}
+
+/* Texto e spinner ficam acima do ::before */
+.btn .btn-text,
+.btn .btn-spinner {
+  position: relative;
+  z-index: 1;
+}
+
+/* Primário — azul sólido */
+.btn--primary {
+  background: var(--azul-benjamim);
+  color: var(--neve);
+}
+
+.btn--primary::before {
+  background: var(--azul-digital);
+}
+
+.btn--primary:hover {
+  color: var(--neve);
+}
+
+/* Secundário — outline em Ante Luz no fundo Neve */
+.btn--secondary {
+  background: transparent;
+  color: var(--ante-luz);
+  border: 1px solid rgba(10,10,10,0.20);
+}
+
+.btn--secondary::before {
+  background: var(--ante-luz);
+}
+
+.btn--secondary:hover {
+  color: var(--neve);
+  border-color: var(--ante-luz);
+}
+
+/* Ghost — sem borda */
+.btn--ghost {
+  background: transparent;
+  color: var(--color-text-muted);
+  padding: 0.625rem 1.25rem;
+}
+
+.btn--ghost::before {
+  background: rgba(10,10,10,0.04);
+}
+
+.btn--ghost:hover {
+  color: var(--ante-luz);
+}
+
+/* Disabled */
+.btn:disabled,
+.btn[disabled] {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Ícone spinner dentro do botão */
+.btn .btn-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: var(--neve);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  display: none;
+}
+
+.btn--secondary .btn-spinner,
+.btn--ghost .btn-spinner {
+  border-color: rgba(10,10,10,0.2);
+  border-top-color: var(--ante-luz);
+}
+
+.btn.is-loading .btn-spinner {
+  display: block;
+}
+
+.btn.is-loading .btn-text {
+  opacity: 0.5;
+}
+
+/* ============================================================
+   CAMPOS DE FORMULÁRIO
+   ============================================================ */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.field__label {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+}
+
+.field__label-aux {
+  margin-left: 0.5em;
+  color: var(--cinza-500);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.field__input,
+.field__select,
+.field__textarea {
+  width: 100%;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius-md);
+  padding: 0.875rem 1rem;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--ante-luz);
+  transition: border-color var(--dur-fast) var(--ease-out),
+              background var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.field__input::placeholder,
+.field__textarea::placeholder {
+  color: var(--color-text-subtle);
+}
+
+.field__input:focus,
+.field__select:focus,
+.field__textarea:focus {
+  border-color: var(--azul-benjamim);
+  background: var(--glass-bg-active);
+  box-shadow: var(--glass-shadow-hover);
+  outline: none;
+}
+
+.field__select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%230A0A0A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+.field__textarea {
+  resize: vertical;
+  min-height: 80px;
+  max-height: 160px;
+  line-height: 1.5;
+}
+
+/* Checkboxes multi-select */
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease-out),
+              background var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
+  user-select: none;
+}
+
+.checkbox-item:hover {
+  background: var(--glass-bg-active);
+  box-shadow: var(--glass-shadow-hover);
+}
+
+.checkbox-item.is-checked {
+  border-color: var(--azul-benjamim);
+  background: rgba(30,58,232,0.10);
+}
+
+.checkbox-item__box {
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(10,10,10,0.35);
+  border-radius: 3px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color var(--dur-fast), background var(--dur-fast);
+}
+
+.checkbox-item.is-checked .checkbox-item__box {
+  border-color: var(--azul-benjamim);
+  background: var(--azul-benjamim);
+}
+
+.checkbox-item__box::after {
+  content: '';
+  width: 8px;
+  height: 5px;
+  border-left: 1.5px solid var(--neve);
+  border-bottom: 1.5px solid var(--neve);
+  transform: rotate(-45deg) translateY(-1px);
+  display: none;
+}
+
+.checkbox-item.is-checked .checkbox-item__box::after {
+  display: block;
+}
+
+.checkbox-item__label {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+}
+
+.checkbox-item.is-checked .checkbox-item__label {
+  color: var(--ante-luz);
+}
+
+/* ============================================================
+   TOAST / NOTIFICAÇÃO
+   ============================================================ */
+
+.toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--ante-luz);
+  border: 1px solid var(--ante-luz);
+  border-radius: var(--radius-md);
+  padding: 0.875rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: calc(var(--container-max) - 3rem);
+  width: calc(100% - 3rem);
+  z-index: var(--z-toast);
+  transition: transform var(--dur-slow) var(--ease-spring);
+  box-shadow: var(--shadow-md);
+}
+
+.toast.is-visible {
+  transform: translateX(-50%) translateY(0);
+}
+
+.toast__icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.toast__text {
+  font-size: var(--text-small);
+  color: rgba(255,255,255,0.85);
+  line-height: 1.4;
+}
+
+/* ============================================================
+   PROGRESS BAR (diagnóstico)
+   ============================================================ */
+
+.progress-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.progress-label {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+}
+
+.progress-value {
+  font-family: var(--font-label);
+  font-size: var(--text-caption);
+  color: var(--ante-luz);
+}
+
+.progress-track {
+  height: 3px;
+  background: rgba(10,10,10,0.08);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--azul-benjamim);
+  border-radius: 99px;
+  width: 0%;
+  transition: width 1.2s var(--ease-spring);
+}
+
+/* ============================================================
+   TAGS
+   ============================================================ */
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.tag {
+  font-family: var(--font-label);
+  font-size: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.625rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+}
+
+.tag--positive {
+  border-color: rgba(30,58,232,0.35);
+  color: var(--azul-benjamim);
+  background: rgba(30,58,232,0.06);
+}
+
+.tag--warning {
+  border-color: rgba(180,120,0,0.30);
+  color: #8C6500;
+  background: rgba(245,200,66,0.10);
+}
+
+.tag--negative {
+  border-color: rgba(190,0,0,0.30);
+  color: #B00020;
+  background: rgba(255,80,80,0.06);
+}
+
+/* ============================================================
+   PRELOADER
+   ============================================================ */
+
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: var(--neve);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity var(--dur-slow) var(--ease-out);
+}
+
+#preloader.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.preloader__logo {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  color: var(--ante-luz);
+  animation: fadeIn 0.4s var(--ease-out) forwards;
+}
+
+.preloader__dot {
+  display: inline-block;
+  animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}

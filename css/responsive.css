@@ -1,0 +1,94 @@
+/* ============================================================
+   RESPONSIVE.CSS — Mobile-first 390px base
+   ============================================================ */
+
+/* ---- Small phones (< 375px) ---- */
+@media (max-width: 374px) {
+  :root {
+    --screen-padding: 1.25rem;
+  }
+
+  .hub__name {
+    font-size: clamp(2.5rem, 9vw, 3.5rem);
+  }
+
+  .btn {
+    padding: 0.875rem 1.5rem;
+  }
+}
+
+/* ---- Large phones (>= 430px) ---- */
+@media (min-width: 430px) {
+  :root {
+    --container-max: 420px;
+  }
+}
+
+/* ---- Tablets (>= 768px) ---- */
+@media (min-width: 768px) {
+  :root {
+    --container-max: 540px;
+    --screen-padding: 3rem;
+  }
+
+  .hub__name {
+    font-size: clamp(4rem, 7vw, 6rem);
+  }
+
+  .hub__actions {
+    flex-direction: row;
+  }
+
+  .hub__actions .btn {
+    width: auto;
+    flex: 1;
+  }
+}
+
+/* ---- Desktop (>= 1024px) ---- */
+@media (min-width: 1024px) {
+  :root {
+    --container-max: 580px;
+  }
+
+  /* Centralizar na tela */
+  .screen {
+    align-items: center;
+  }
+
+  .screen > * {
+    width: 100%;
+    max-width: var(--container-max);
+  }
+}
+
+/* ---- Landscape mobile ---- */
+@media (max-height: 600px) and (orientation: landscape) {
+  :root {
+    --screen-padding: 1rem;
+    --space-xl: 2rem;
+  }
+
+  .hub__hero {
+    padding: var(--space-md) 0;
+  }
+
+  .hub__name {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+
+  .modal-loading {
+    padding-top: var(--space-md);
+  }
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
