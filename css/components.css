@@ -431,8 +431,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: var(--space-sm);
   z-index: 9999;
-  transition: opacity 0.6s var(--ease-out);
+  transition: opacity 0.55s var(--ease-out);
 }
 
 #preloader.is-hidden {
@@ -442,7 +443,7 @@
 
 /* Logo PNG invertida a branco no fundo escuro */
 .preloader__logo-img {
-  height: clamp(30px, 7vw, 42px);
+  height: clamp(44px, 11vw, 64px);
   width: auto;
   filter: brightness(0) invert(1);   /* converte antiluz (escuro) → branco */
   animation: fadeIn 0.5s var(--ease-out) 0.15s both;
@@ -450,33 +451,15 @@
   -webkit-user-drag: none;
 }
 
-/* Barra de progresso — ancorada na base do ecrã */
-.preloader__bar-wrap {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: rgba(255,255,255,0.06);
-  overflow: hidden;
-}
-
-.preloader__bar {
-  height: 100%;
-  width: 0%;
-  background: var(--azul-benjamim);
-  animation: preloaderFill 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-@keyframes preloaderFill {
-  0%   { width: 0%; }
-  60%  { width: 75%; }
-  85%  { width: 90%; }
-  100% { width: 95%; }
-}
-
-/* Quando o preloader começa a sair, a barra fecha */
-#preloader.is-hidden .preloader__bar {
-  width: 100%;
-  transition: width 0.25s var(--ease-out);
+/* Contador de porcentagem */
+.preloader__percent {
+  font-family: var(--font-label);
+  font-size: var(--text-caption);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.45);
+  font-variant-numeric: tabular-nums;
+  min-width: 3.5ch;
+  text-align: center;
+  animation: fadeIn 0.4s var(--ease-out) 0.3s both;
 }

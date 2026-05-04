@@ -13,27 +13,41 @@ const Animations = (() => {
     const preloader = document.getElementById('preloader');
     if (!preloader) return;
 
-    const dismiss = () => {
-      // Completa a barra antes de sair
-      const bar = preloader.querySelector('.preloader__bar');
-      if (bar) {
-        bar.style.transition = 'width 0.25s ease-out';
-        bar.style.width = '100%';
-      }
-      // Pequena pausa para a barra chegar a 100%, depois fade out
-      setTimeout(() => {
-        preloader.classList.add('is-hidden');
-        setTimeout(() => preloader.remove(), 700);
-      }, 260);
-    };
-
     if (reducedMotion) {
       preloader.remove();
       return;
     }
 
-    // Delay generoso — garante que a barra avança e o nome é lido
-    setTimeout(dismiss, 2200);
+    const percentEl = document.getElementById('preloader-percent');
+    const duration  = 2200;   // ms total até dismiss
+    let startTs     = null;
+
+    // Contador ease-out: rápido no início, desacelera perto de 100
+    function tickPercent(ts) {
+      if (!startTs) startTs = ts;
+      const progress = Math.min((ts - startTs) / duration, 1);
+      // Curva: quadrática out (rápido → lento)
+      const eased = 1 - Math.pow(1 - progress, 2.2);
+      const value = Math.floor(eased * 100);
+
+      if (percentEl) percentEl.textContent = value + '%';
+
+      if (progress < 1) {
+        requestAnimationFrame(tickPercent);
+      }
+    }
+
+    requestAnimationFrame(tickPercent);
+
+    // Dismiss: fecha em 100% e faz fade out
+    setTimeout(() => {
+      if (percentEl) percentEl.textContent = '100%';
+      // Breve pausa para o 100% ser lido, depois fade out
+      setTimeout(() => {
+        preloader.classList.add('is-hidden');
+        setTimeout(() => preloader.remove(), 600);
+      }, 180);
+    }, duration);
   }
 
   // ---- GSAP — só ativa se carregou ----
@@ -51,14 +65,6 @@ const Animations = (() => {
     if (hubName) {
       gsap.from(hubName, {
         y: 30, opacity: 0, duration: 0.9, ease: 'power3.out', delay: 0.3,
-        clearProps: 'all',
-      });
-    }
-
-    const hubClaim = document.querySelector('.hub__claim');
-    if (hubClaim) {
-      gsap.from(hubClaim, {
-        y: 20, opacity: 0, duration: 0.7, ease: 'power3.out', delay: 0.5,
         clearProps: 'all',
       });
     }

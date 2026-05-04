@@ -15,9 +15,14 @@
 
 .screen {
   display: none;
-  min-height: 100dvh;
+  /* svh = viewport com barra do browser SEMPRE visível
+     Evita salto de layout quando a barra aparece/some */
+  min-height: 100vh;         /* fallback navegadores antigos */
+  min-height: 100svh;        /* estável: não muda com barra nativa */
   flex-direction: column;
   padding: var(--screen-padding);
+  /* safe-area para notch/barra home iOS/Android */
+  padding-bottom: max(var(--screen-padding), env(safe-area-inset-bottom, var(--screen-padding)));
   position: relative;
   overflow: hidden;
 }
