@@ -2,6 +2,14 @@
    BASE.CSS — Estilos globais e utilitários
    ============================================================ */
 
+/* ---- Body — renderização consistente cross-browser ---- */
+
+body {
+  -webkit-font-smoothing: antialiased;   /* Chrome/Safari: suavização subpixel → cinza uniforme */
+  -moz-osx-font-smoothing: grayscale;    /* Firefox macOS */
+  text-rendering: optimizeLegibility;
+}
+
 /* ---- Layout ---- */
 
 .container {
@@ -126,10 +134,12 @@
   to { transform: rotate(360deg); }
 }
 
-[data-anim] {
+/* Visível por padrão — JS adiciona is-active na tela e dispara animação.
+   Fallback: se JS falhar, .js-ready nunca é adicionado e o conteúdo fica visível. */
+.js-ready [data-anim] {
   opacity: 0;
 }
 
-[data-anim].is-visible {
+.js-ready [data-anim].is-visible {
   animation: fadeUp var(--dur-enter) var(--ease-spring) forwards;
 }

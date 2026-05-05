@@ -26,6 +26,8 @@
   cursor: pointer;
   position: relative;
   white-space: nowrap;
+  /* Elimina delay de 300ms em toque no Android/iOS */
+  touch-action: manipulation;
   /* Transição principal */
   transition: transform 0.18s var(--ease-spring),
               box-shadow 0.18s var(--ease-spring),
@@ -239,6 +241,7 @@
   box-shadow: var(--glass-shadow);
   border-radius: var(--radius-md);
   cursor: pointer;
+  touch-action: manipulation;
   transition: border-color var(--dur-fast) var(--ease-out),
               background var(--dur-fast) var(--ease-out),
               box-shadow var(--dur-fast) var(--ease-out);
@@ -432,7 +435,8 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-sm);
-  z-index: 9999;
+  /* Token system: preloader acima de tudo, acima do z-toast (400) */
+  z-index: 500;
   transition: opacity 0.55s var(--ease-out);
 }
 
@@ -451,7 +455,8 @@
   -webkit-user-drag: none;
 }
 
-/* Contador de porcentagem */
+/* Contador de porcentagem — visibilidade controlada via JS (opacity inline)
+   Não usa animation CSS para evitar conflito com fill-mode no Chrome */
 .preloader__percent {
   font-family: var(--font-label);
   font-size: var(--text-caption);
@@ -461,5 +466,6 @@
   font-variant-numeric: tabular-nums;
   min-width: 3.5ch;
   text-align: center;
-  animation: fadeIn 0.4s var(--ease-out) 0.3s both;
+  opacity: 0;
+  transition: opacity 0.35s var(--ease-out);
 }

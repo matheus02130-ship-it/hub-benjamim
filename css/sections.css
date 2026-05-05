@@ -219,6 +219,7 @@
 }
 
 .form__note {
+  font-family: var(--font-body);   /* Archivo — texto informativo */
   text-align: center;
   font-size: var(--text-caption);
   color: var(--color-text-subtle);
@@ -571,6 +572,7 @@
 }
 
 .modal-input__sub {
+  font-family: var(--font-body);   /* Archivo — texto auxiliar */
   font-size: var(--text-small);
   color: var(--color-text-muted);
   line-height: 1.5;
@@ -632,6 +634,7 @@
 }
 
 .modal-input__disclaimer {
+  font-family: var(--font-body);   /* Archivo — aviso legal/informativo */
   font-size: var(--text-caption);
   color: var(--color-text-subtle);
   text-align: center;

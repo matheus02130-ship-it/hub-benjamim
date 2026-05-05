@@ -71,8 +71,8 @@
   --text-h3:      clamp(1.125rem,2vw, 1.5rem);
   --text-body:    clamp(0.938rem,1.5vw, 1.0625rem);
   --text-small:   clamp(0.8125rem,1vw, 0.875rem);
-  --text-caption: 0.75rem;
-  --text-label:   0.6875rem;
+  --text-caption: 0.8125rem;  /* 13px — mínimo acessível */
+  --text-label:   0.75rem;    /* 12px — mínimo absoluto WCAG */
 
   /* ============================================================
      ESPAÇAMENTO

@@ -37,6 +37,10 @@ const Toast = (() => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Sinaliza ao CSS que JS está ativo — ativa [data-anim] e animações de entrada.
+  // Sem isso, conteúdo fica visível mesmo sem JS (graceful degradation).
+  document.documentElement.classList.add('js-ready');
+
   Screens.init();
   Form.init();
   Analysis.init();
@@ -48,11 +52,12 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ---- Fix BFCache (Instagram / Safari in-app browser) ----
-// Quando o usuário fecha e reabre o link, o browser pode restaurar a página
-// do cache sem disparar DOMContentLoaded novamente. O pageshow com
-// event.persisted detecta esse caso e força um reload limpo.
+// Guard: _bfcacheReloaded evita loop de reload caso o pageshow dispare novamente
+// após o location.reload() em certos in-app browsers.
+let _bfcacheReloaded = false;
 window.addEventListener('pageshow', (event) => {
-  if (event.persisted) {
+  if (event.persisted && !_bfcacheReloaded) {
+    _bfcacheReloaded = true;
     window.location.reload();
   }
 });

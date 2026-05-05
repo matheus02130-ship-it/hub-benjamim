@@ -22,6 +22,12 @@ const Animations = (() => {
     const duration  = 2200;   // ms total até dismiss
     let startTs     = null;
 
+    // Fade-in do contador via JS — evita conflito com CSS animation-fill-mode no Chrome.
+    // O elemento começa em opacity:0 (CSS) e o JS faz a transição após 150ms.
+    if (percentEl) {
+      setTimeout(() => { percentEl.style.opacity = '1'; }, 150);
+    }
+
     // Contador ease-out: rápido no início, desacelera perto de 100
     function tickPercent(ts) {
       if (!startTs) startTs = ts;

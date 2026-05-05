@@ -8,9 +8,7 @@
     --screen-padding: 1.25rem;
   }
 
-  .hub__name {
-    font-size: clamp(2.5rem, 9vw, 3.5rem);
-  }
+  /* hub__name é tagline pequena (Oswald uppercase) — não altera tamanho em small phones */
 
   .btn {
     padding: 0.875rem 1.5rem;
@@ -31,9 +29,7 @@
     --screen-padding: 3rem;
   }
 
-  .hub__name {
-    font-size: clamp(4rem, 7vw, 6rem);
-  }
+  /* hub__name mantém tamanho fluido definido em sections.css */
 
   .hub__actions {
     flex-direction: row;
@@ -71,10 +67,6 @@
 
   .hub__hero {
     padding: var(--space-md) 0;
-  }
-
-  .hub__name {
-    font-size: clamp(2rem, 6vw, 3rem);
   }
 
   .modal-loading {

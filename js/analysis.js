@@ -70,6 +70,8 @@ const Analysis = (() => {
       abortController = null;
     }
 
+    stopLoadingMessages();
+
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
@@ -148,6 +150,36 @@ const Analysis = (() => {
   }
 
   // ---- Análise ----
+  // Mensagens de progresso exibidas durante o loading (rotação de ~4s cada)
+  const LOADING_MESSAGES = [
+    'Buscando seu perfil no Instagram…',
+    'Lendo os dados do perfil…',
+    'Analisando sua presença digital…',
+    'Preparando o diagnóstico…',
+  ];
+
+  let _loadingMsgTimer = null;
+
+  function startLoadingMessages() {
+    const subEl = document.getElementById('modal-loading-sub');
+    if (!subEl) return;
+
+    let idx = 0;
+    subEl.textContent = LOADING_MESSAGES[idx];
+
+    _loadingMsgTimer = setInterval(() => {
+      idx = (idx + 1) % LOADING_MESSAGES.length;
+      subEl.textContent = LOADING_MESSAGES[idx];
+    }, 4000);
+  }
+
+  function stopLoadingMessages() {
+    if (_loadingMsgTimer) {
+      clearInterval(_loadingMsgTimer);
+      _loadingMsgTimer = null;
+    }
+  }
+
   async function startAnalysis() {
     const input = document.getElementById('modal-handle-input');
     handle = sanitizeHandle(input?.value);
@@ -163,22 +195,39 @@ const Analysis = (() => {
       return;
     }
 
+    // Detecta conexão offline antes de iniciar
+    if (!navigator.onLine) {
+      Toast.show('📶', 'Sem conexão com a internet. Verifique seu Wi-Fi ou dados.');
+      return;
+    }
+
     showStep(2);
     const loadingHandle = document.getElementById('modal-loading-handle');
     if (loadingHandle) loadingHandle.textContent = `@${handle}`;
+    startLoadingMessages();
 
     try {
       const data = await fetchAnalysis(handle);
+      stopLoadingMessages();
       analysisData = data;
       sessionStorage.setItem('analysis', JSON.stringify(data));
       renderConfirm(data);
       showStep(3);
     } catch (err) {
-      if (err.name === 'AbortError') return;
+      stopLoadingMessages();
+      if (err.name === 'AbortError') {
+        // Timeout de 20s — mensagem mais informativa
+        Toast.show('⏱', 'A análise demorou mais que o esperado. Tente novamente.');
+        showStep(1);
+        return;
+      }
       const isNotFound = err.status === 404 || /not.?found|inex/i.test(err.message || '');
-      Toast.show('⚠️', isNotFound
-        ? 'Não encontramos esse perfil. Confira o @ e tente novamente.'
-        : 'Não conseguimos analisar agora. Tente de novo em instantes.');
+      const isOffline   = !navigator.onLine || /failed to fetch|network/i.test(err.message || '');
+      Toast.show('⚠️', isOffline
+        ? 'Sem conexão. Verifique seu Wi-Fi ou dados e tente novamente.'
+        : isNotFound
+          ? 'Não encontramos esse perfil. Confira o @ e tente novamente.'
+          : 'Não conseguimos analisar agora. Tente de novo em instantes.');
       showStep(1);
     }
   }
