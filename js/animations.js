@@ -22,10 +22,14 @@ const Animations = (() => {
     const duration  = 2200;   // ms total até dismiss
     let startTs     = null;
 
-    // Fade-in do contador via JS — evita conflito com CSS animation-fill-mode no Chrome.
-    // O elemento começa em opacity:0 (CSS) e o JS faz a transição após 150ms.
+    // Fade-in via JS — evita conflito com CSS animation-fill-mode no Chrome.
+    // Ambos os elementos começam em opacity:0 (CSS) e o JS faz a transição.
+    const logoEl = document.querySelector('.preloader__logo-img');
+    if (logoEl) {
+      setTimeout(() => { logoEl.style.opacity = '1'; }, 80);
+    }
     if (percentEl) {
-      setTimeout(() => { percentEl.style.opacity = '1'; }, 150);
+      setTimeout(() => { percentEl.style.opacity = '1'; }, 200);
     }
 
     // Contador ease-out: rápido no início, desacelera perto de 100

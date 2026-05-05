@@ -447,10 +447,11 @@
 
 /* Logo PNG invertida a branco no fundo escuro */
 .preloader__logo-img {
-  height: clamp(30px, 7.7vw, 44px);   /* 30% menor que versão anterior */
+  height: clamp(39px, 10vw, 57px);   /* +30% */
   width: auto;
   filter: brightness(0) invert(1);
-  animation: fadeIn 0.5s var(--ease-out) 0.15s both;
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-out);
   user-select: none;
   -webkit-user-drag: none;
 }
