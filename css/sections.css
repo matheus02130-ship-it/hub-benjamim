@@ -9,14 +9,14 @@
 #screen-hub {
   justify-content: space-between;
   align-items: center;
-  background: red;
+  background: var(--neve);
   text-align: center;
 }
 
 /* Logo centrada no hero — escala com o texto tagline abaixo */
 .hub__hero-logo {
   display: block;
-  height: clamp(11px, 2vw, 14px);   /* 20% menor que versão anterior */
+  height: clamp(28px, 6vw, 40px);
   width: auto;
   user-select: none;
   -webkit-user-drag: none;
