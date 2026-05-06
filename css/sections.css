@@ -13,14 +13,13 @@
   text-align: center;
 }
 
-/* Logo centrada no hero — escala com o texto tagline abaixo */
+/* Logo centrada no hero */
 .hub__hero-logo {
   display: block;
-  height: clamp(28px, 6vw, 40px);
+  height: clamp(44px, 12vw, 60px);
   width: auto;
   user-select: none;
   -webkit-user-drag: none;
-  margin-bottom: var(--space-sm);
 }
 
 /* ---- Logo top-left — usado no topo das telas form/confirm ---- */
@@ -39,30 +38,31 @@
   -webkit-user-drag: none;
 }
 
-/* Hero do hub */
+/* Hero do hub — centralizado na tela inteira;
+   footer é absolute, não entra no fluxo */
 .hub__hero {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-md);
-  padding: var(--space-xl) 0;
+  gap: var(--space-lg);
   width: 100%;
+  /* espaço suficiente para o footer absoluto não sobrepor */
+  padding-bottom: max(5rem, env(safe-area-inset-bottom, 5rem));
 }
 
 .hub__name {
-  font-family: var(--font-label);   /* Oswald — condensado, kern refinado */
+  font-family: var(--font-label);
   font-style: normal;
-  font-weight: 300;                 /* leve para tagline */
-  font-size: clamp(0.875rem, 2.5vw, 1.0625rem);
-  line-height: 1.65;                /* respiração entre as 2 linhas */
-  letter-spacing: 0.06em;          /* kerning mais justo para frases longas */
-  word-spacing: 0.12em;            /* espaço entre palavras ligeiramente maior */
+  font-weight: 300;
+  font-size: clamp(0.9375rem, 2.8vw, 1.1875rem); /* ~15px mobile → 2 linhas */
+  line-height: 1.55;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--ante-luz);
   text-align: center;
-  max-width: 28rem;
+  max-width: 26rem;
   width: 100%;
 }
 
@@ -112,15 +112,18 @@
   margin-top: var(--space-sm);
 }
 
-/* Footer — Apple-style: centralizado, pequeno, discreto, safe-area */
+/* Footer — absoluto no fundo da tela;
+   não compete com o hero no fluxo flex */
 .hub__footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding-top: var(--space-md);
-  /* safe-area garante espaço abaixo da barra nativa iOS/Android */
-  padding-bottom: max(var(--space-lg), env(safe-area-inset-bottom, var(--space-lg)));
+  align-items: flex-end;
+  padding: var(--space-xs) var(--screen-padding)
+           max(var(--space-lg), env(safe-area-inset-bottom, var(--space-lg)));
 }
 
 .hub__copy {
