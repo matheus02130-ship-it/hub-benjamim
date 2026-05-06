@@ -351,8 +351,12 @@
 .toast {
   position: fixed;
   bottom: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%) translateY(100px);
+  /* centra sem translateX: evita overflow lateral em mobile */
+  left: 1.5rem;
+  right: 1.5rem;
+  margin-inline: auto;
+  max-width: calc(var(--container-max) - 3rem);
+  transform: translateY(120px);
   background: var(--ante-luz);
   border: 1px solid var(--ante-luz);
   border-radius: var(--radius-md);
@@ -360,15 +364,13 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  max-width: calc(var(--container-max) - 3rem);
-  width: calc(100% - 3rem);
   z-index: var(--z-toast);
   transition: transform var(--dur-slow) var(--ease-spring);
   box-shadow: var(--shadow-md);
 }
 
 .toast.is-visible {
-  transform: translateX(-50%) translateY(0);
+  transform: translateY(0);
 }
 
 .toast__icon {

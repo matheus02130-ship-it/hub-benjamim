@@ -26,7 +26,6 @@ body {
     radial-gradient(ellipse 80% 60% at 20% 0%,   rgba(30, 58, 232, 0.06), transparent 60%),
     radial-gradient(ellipse 70% 55% at 90% 100%, rgba(0, 50, 160, 0.045), transparent 55%),
     var(--color-bg);
-  background-attachment: fixed;
   line-height: 1.6;
   overflow-x: hidden;
   max-width: 100%;
