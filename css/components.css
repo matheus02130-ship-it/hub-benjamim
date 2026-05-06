@@ -173,7 +173,11 @@
 }
 
 .btn--gelo:disabled {
-  opacity: 0.45;
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.55);
+  border-color: rgba(255, 255, 255, 0.60);
+  color: rgba(10, 10, 10, 0.45);
+  box-shadow: none;
   cursor: not-allowed;
   transform: none;
 }
