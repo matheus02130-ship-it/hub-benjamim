@@ -13,6 +13,8 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;   /* bloqueia scroll lateral em todos os browsers */
+  max-width: 100%;
 }
 
 body {
@@ -27,6 +29,7 @@ body {
   background-attachment: fixed;
   line-height: 1.6;
   overflow-x: hidden;
+  max-width: 100%;
   min-height: 100dvh;
 }
 
