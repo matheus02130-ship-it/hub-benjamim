@@ -273,25 +273,6 @@
   color: var(--neve);
 }
 
-/* Botão secundário no fundo azul — glass neve */
-.form__analysis .btn--secondary {
-  background: rgba(255, 255, 255, 0.18);
-  border-color: rgba(255, 255, 255, 0.50);
-  color: var(--neve);
-  box-shadow:
-    0 1px 0 inset rgba(255, 255, 255, 0.30),
-    0 -1px 0 inset rgba(0, 0, 0, 0.10),
-    0 4px 16px rgba(0, 0, 0, 0.12);
-}
-
-.form__analysis .btn--secondary:hover {
-  background: rgba(255, 255, 255, 0.28);
-  border-color: rgba(255, 255, 255, 0.70);
-}
-
-.form__analysis .btn--secondary:disabled {
-  opacity: 0.45;
-}
 
 /* ============================================================
    SCREEN 3 — CONFIRMAÇÃO
