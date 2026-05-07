@@ -49,7 +49,7 @@
   gap: var(--space-lg);
   width: 100%;
   /* espaço suficiente para o footer absoluto não sobrepor */
-  padding-bottom: max(5rem, env(safe-area-inset-bottom, 5rem));
+  padding-bottom: max(3rem, env(safe-area-inset-bottom, 3rem));
 }
 
 .hub__name {
