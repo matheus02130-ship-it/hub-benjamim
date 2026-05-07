@@ -143,7 +143,15 @@
   justify-content: flex-start;
   gap: 0;
   align-items: center;
-  /* espaço para o footer absoluto não sobrepor o card de análise */
+  /* Scroll interno: permite rolar o conteúdo do form sem mexer no overflow
+     global de .screen. O footer position:absolute fica travado em bottom:0
+     do container fixo (= viewport bottom), e o padding-bottom abaixo garante
+     que o card de análise não fique escondido sob ele. */
+  height: 100vh;            /* fallback */
+  height: 100svh;           /* moderno — exatamente o viewport */
+  min-height: 0;            /* override do min-height: 100svh de .screen */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   padding-bottom: max(4.5rem, env(safe-area-inset-bottom, 4.5rem));
 }
 
